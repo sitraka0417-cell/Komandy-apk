@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LesonaEDS</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1B1B1B;
+    --card-2: #1F1F1F;
+    --gold: #C9A227;
+    --gold-soft: #E5C874;
+    --text: #EDEDED;
+    --subtext: #9A9A9A;
+    --divider: #2A2A2A;
+    --red: #E24C4C;
+    --whatsapp: #3FA872;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.55;
+  }
+
+  h1, h2 {
+    font-family: Georgia, "Palatino Linotype", "Iowan Old Style", serif;
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 56px 24px 40px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  .logo {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    object-fit: cover;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+    color: var(--gold-soft);
+    letter-spacing: 0.3px;
+  }
+
+  .desc {
+    color: var(--subtext);
+    font-size: 16px;
+    max-width: 440px;
+    margin: 20px auto 0;
+  }
+
+  /* ---------- ARROW CALLOUT ---------- */
+  .callout {
+    text-align: center;
+    margin: 40px 0 44px;
+  }
+
+  .arrow {
+    font-size: 30px;
+    color: var(--red);
+    animation: pip 1.3s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes pip {
+    0%, 100% { transform: translateY(0); opacity: 0.55; }
+    50% { transform: translateY(10px); opacity: 1; }
+  }
+
+  .callout p {
+    margin: 10px auto 0;
+    max-width: 380px;
+    font-size: 15.5px;
+    color: var(--gold-soft);
+    font-weight: 600;
+  }
+
+  /* ---------- DOWNLOAD APK BLOCK ---------- */
+  .apk-block {
+    text-align: center;
+    padding: 8px 0 48px;
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 44px;
+  }
+
+  .apk-block .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+  }
+
+  .apk-block h2 {
+    font-size: 19px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15.5px;
+    font-weight: 600;
+    padding: 14px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: #14110A;
+  }
+
+  .btn-primary:active { background: var(--gold-soft); }
+
+  /* ---------- VIDEO SECTION ---------- */
+  .video-block {
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 44px;
+  }
+
+  .video-block h2 {
+    font-size: 18px;
+    color: var(--gold-soft);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .player video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .play-toggle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.28);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .play-toggle.is-playing {
+    background: transparent;
+  }
+
+  .play-toggle svg {
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 3px 10px rgba(0,0,0,0.6));
+  }
+
+  .play-toggle.is-playing svg {
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .player:active .play-toggle.is-playing svg {
+    opacity: 1;
+  }
+
+  .video-dl {
+    text-align: center;
+    margin-top: 18px;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--gold-soft);
+    border: 1px solid var(--gold);
+  }
+
+  /* ---------- CONTACT SECTION ---------- */
+  .contact h2 {
+    text-align: center;
+    font-size: 19px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .contact .sub {
+    text-align: center;
+    color: var(--subtext);
+    font-size: 14px;
+    margin-bottom: 26px;
+  }
+
+  .contact-logo {
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    margin: 0 auto 14px;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .contact-row:active { background: var(--card-2); }
+
+  .contact-row img {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .contact-row .label {
+    font-size: 15px;
+  }
+
+  .contact-row .value {
+    display: block;
+    font-size: 13px;
+    color: var(--subtext);
+    margin-top: 1px;
+  }
+
+  footer {
+    text-align: center;
+    color: #5A5A5A;
+    font-size: 12px;
+    padding: 40px 0 10px;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 50;
+  }
+
+  .modal-backdrop.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 26px 24px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  }
+
+  .modal p {
+    font-size: 15px;
+    color: var(--text);
+    margin: 0 0 22px;
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-modal {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    text-align: center;
+  }
+
+  .btn-cancel {
+    background: transparent;
+    color: var(--subtext);
+    border: 1px solid var(--divider);
+  }
+
+  .btn-continue {
+    background: var(--gold);
+    color: #14110A;
+    border: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="logo.jpg" alt="LesonaEDS" class="logo">
+    <h1>LesonaEDS</h1>
+    <p class="desc">Ny LesonaEDS dia application natao hanamorana ny fandraisana kômandin-desona na articles hafa ao amin'ny fiangonana.</p>
+  </div>
+
+  <!-- ARROW CALLOUT -->
+  <div class="callout">
+    <span class="arrow">&#9660;</span>
+    <p>Azonao alaina etsy ambany ny fichier apk sy ny video fampianarana mampiasa azy.</p>
+  </div>
+
+  <!-- APK DOWNLOAD -->
+  <div class="apk-block">
+    <img src="logo.jpg" alt="LesonaEDS" class="logo">
+    <h2>LesonaEDS</h2>
+    <button class="btn btn-primary" id="btnAskApk">Télécharger l'apk</button>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="video-block">
+    <h2>Video fampianarana fampiasana</h2>
+    <div class="player" id="player">
+      <video id="tutoVideo" src="tuto.mp4" playsinline></video>
+      <div class="play-toggle" id="playToggle">
+        <svg id="playIcon" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="31" fill="rgba(0,0,0,0.45)" stroke="#EDEDED" stroke-width="1.5"/>
+          <path d="M26 20 L46 32 L26 44 Z" fill="#EDEDED"/>
+        </svg>
+      </div>
+    </div>
+    <div class="video-dl">
+      <a class="btn btn-outline" href="tuto.mp4" download>Télécharger la video</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <img src="logo.jpg" alt="LesonaEDS" class="contact-logo">
+    <h2>Mifandraisa aminay</h2>
+    <p class="sub">Tsindrio izay fomba mety aminao</p>
+    <div class="contact-list">
+      <a class="contact-row" href="tel:0348017559">
+        <img src="telephone.jpg" alt="Téléphone">
+        <span>
+          <span class="label">Antso</span>
+          <span class="value">0348017559 — Sitraka Nambinintsoa</span>
+        </span>
+      </a>
+      <a class="contact-row" href="https://wa.me/261332071765" target="_blank" rel="noopener">
+        <img src="whatsApp.jpg" alt="WhatsApp">
+        <span>
+          <span class="label">WhatsApp</span>
+          <span class="value">+261 33 20 717 65</span>
+        </span>
+      </a>
+      <a class="contact-row" href="mailto:sitraka0417@gmail.com">
+        <img src="email.jpg" alt="Email">
+        <span>
+          <span class="label">Email</span>
+          <span class="value">sitraka0417@gmail.com</span>
+        </span>
+      </a>
+      <a class="contact-row" href="https://www.facebook.com/sitraka.nambinintsoa.739981" target="_blank" rel="noopener">
+        <img src="facebook.jpg" alt="Facebook">
+        <span>
+          <span class="label">Sitraka Nambinintsoa</span>
+          <span class="value">Facebook</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <footer>LesonaEDS — Septambra 2026.</footer>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <p>Version gratuit ity, fa raha mila ilay version misy synchronisation en ligne na mila fanazavana mahakasika izany ianao, dia manasa anao hiresaka amin'i Sitraka Nambinintsoa.</p>
+    <div class="modal-actions">
+      <button class="btn-modal btn-cancel" id="btnCancel">Annulé</button>
+      <button class="btn-modal btn-continue" id="btnContinue">Continuer de telecharger la version gratuite</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // --- APK download popup flow ---
+  var modal = document.getElementById('modalBackdrop');
+  document.getElementById('btnAskApk').addEventListener('click', function () {
+    modal.classList.add('open');
+  });
+  document.getElementById('btnCancel').addEventListener('click', function () {
+    modal.classList.remove('open');
+  });
+  document.getElementById('btnContinue').addEventListener('click', function () {
+    modal.classList.remove('open');
+    var a = document.createElement('a');
+    a.href = 'LesonaEDS.apk';
+    a.download = 'LesonaEDS.apk';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) modal.classList.remove('open');
+  });
+
+  // --- Video play/pause toggle ---
+  var video = document.getElementById('tutoVideo');
+  var toggle = document.getElementById('playToggle');
+  toggle.addEventListener('click', function () {
+    if (video.paused) {
+      video.play();
+      toggle.classList.add('is-playing');
+    } else {
+      video.pause();
+      toggle.classList.remove('is-playing');
+    }
+  });
+  video.addEventListener('ended', function () {
+    toggle.classList.remove('is-playing');
+  });
+</script>
+
+</body>
+</html>
